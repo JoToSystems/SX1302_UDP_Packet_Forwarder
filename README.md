@@ -33,3 +33,39 @@ Issue 2 - a lack of temperature sensor
   If the following line is missing but required, the default value is 20.0C
 
   "temperature_value": 25.0
+  
+  
+  
+```
+More Detail about the "temp" data element in the stat datagram
+  
+SX1301 UDP Packet Forwarder follows what I think is the original gateway-to-server protocol whereas the more recent SX1302 UDP Packet Forwarder follows version v1.3 of the gateway-to-server protocol.
+
+The observation described here relates to the behaviour with the stat datagram
+ json
+{
+	"stat":{...}
+}
+
+Example
+V1.3 gateway-to-server protocol				Original gateway-to-server protocol
+(SX1302 stat datagram)						(SX1301 stat datagram)
+{"stat":{									{"stat":{					
+    "time":"2014-01-12 08:59:28 GMT",		    "time":"2014-01-12 08:59:28 GMT",
+    "lati":46.24000,						            "lati":46.24000,
+    "long":3.25230,							    "long":3.25230,
+    "alti":145,								    "alti":145,
+    "rxnb":2,								    "rxnb":2,
+    "rxok":2,								    "rxok":2,
+    "rxfw":2,								    "rxfw":2,
+    "ackr":100.0,							    "ackr":100.0,
+    "dwnb":2,								    "dwnb":2,
+    "txnb":2,								    "txnb":2
+    "temp": 23.2							}}
+}}
+Observation
+When a stat datagram using V1.3 of the gateway-to-server protocol is sent the TTN server ignores the datagram all together
+This can be observed on the console as the gateway is "Not Seen".
+The only time the gateway "Last Seen" is updated is when a Lora radio packet is received and forwarded to the server.
+By patching the SX1302 UDP packet forwarder and removing the temp data element bot the V2 and V3 versions of the server operate correctly.
+
