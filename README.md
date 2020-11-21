@@ -34,7 +34,9 @@ The following commands have been added and are included in the global_config.jso
   If the following line is missing but required, the default value is 20.0C
 
   ### "temperature_value": 25.0
-  
+
+## Files and Installation
+
 You only need to copy the file lora_pkt_fwd.  Use the attached version of global_config.json as a reference to demonstrate how to add lines to your existing file.  The third file reset_lgw.sh has not been modified, use your existing file, its only included to provide a complete set of files.
   
   
