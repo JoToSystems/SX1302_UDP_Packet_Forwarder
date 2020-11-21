@@ -11,29 +11,27 @@ The following commands have been added and are included in the global_config.jso
 
 ## Issue 1 - to control the "temp" data element
 
-  The "temp" data element in "stat" datagram" can be included or excluded.
-  If following line is missing the default value is true and the temp variable is included in the stat datagram
-  To send temperature data element set the following to true. 
-  Too prevent sending the "temp" set the following to false.
-
   ### "temperature_active":false,
+  The "temp" data element in "stat" datagram" can be included or excluded.
+  If this line is missing the default value is true and the temp variable is included in the stat datagram
+  To send temperature data element set it to true. 
+  Too prevent sending the "temp" set it to false.
 
 
 ## Issue 2 - a lack of temperature sensor
 
-  Some SX1302 gateway modules do not have a stts751 temperature sensor installed.  As a result the packet forwarder will fail to start.
-  Where the sensor is installed place "true" in the next line of code and the sensor will be used
-  Where there is no sensor, place "false" in the next line of code
-  The default value if the following line is not included in global_config.json is true
-
   ### "temperature_sensor": true,
-
-
-  When there is no sensor, use the next command to set the expected gateway temperature as this is used in the calculation of RSSI
-  If "temperature_sensor" was set to "true" sensor is used to measure temperature and the following variable is ignore
-  If the following line is missing but required, the default value is 20.0C
+  Some SX1302 gateway modules do not have a stts751 temperature sensor installed.  As a result the packet forwarder will fail to start.
+  Where the sensor is installed place use the value of "true" and the sensor will be used.
+  Where there is no sensor, use "false".
+  The default value (if the line is not included in global_config.json) is true
 
   ### "temperature_value": 25.0
+  When there is no sensor, use the command to set the expected gateway temperature to a set value.
+  This is used in the calculation of RSSI
+  If "temperature_sensor" was set to "true" then the sensor is used to measure temperature and the variable is ignore
+  If the line is missing the default value is 20.0C
+
 
 ## Files and Installation
 
