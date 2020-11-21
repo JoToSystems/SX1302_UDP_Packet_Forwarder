@@ -70,7 +70,10 @@ V1.3 gateway-to-server protocol				Original gateway-to-server protocol
 ```
 ## Observation
 TTN server ignores the "stat" datagram when using V1.3 of the gateway-to-server protocol
+
 This can be observed on the console as the gateway is "Not Seen".
+
 The only time the gateway "Last Seen" is updated is when a Lora radio packet is received and forwarded to the server.
+
 By patching the SX1302 UDP packet forwarder and removing the temp data element both the V2 and V3 versions of the server operate correctly.
 
