@@ -51,6 +51,7 @@ The observation described here relates to the behaviour with the stat datagram
 }
 
 ### Example
+```
 V1.3 gateway-to-server protocol				Original gateway-to-server protocol
 (SX1302 stat datagram)						(SX1301 stat datagram)
 {"stat":{									{"stat":{					
@@ -66,7 +67,7 @@ V1.3 gateway-to-server protocol				Original gateway-to-server protocol
     "txnb":2,								    "txnb":2
     "temp": 23.2							}}
 }}
-
+```
 ## Observation
 TTN server ignores the "stat" datagram when using V1.3 of the gateway-to-server protocol
 This can be observed on the console as the gateway is "Not Seen".
