@@ -11,9 +11,10 @@ The following commands have been added and are included in the global_config.jso
 
 Issue 1 - to control the "temp" data element
 
-  To next elements enables or disables sending "temp" data element in "stat" datagram" */
-  If following line is missing the default value is true and the temp variable is included in the stat datagram */
-  To send temperature data element set the following to true, to prevent sending the "temp" set the following to false  */
+  The "temp" data element in "stat" datagram" can be included or excluded.
+  If following line is missing the default value is true and the temp variable is included in the stat datagram
+  To send temperature data element set the following to true. 
+  Too prevent sending the "temp" set the following to false.
 
   "temperature_active":false,
 
@@ -23,18 +24,18 @@ Issue 2 - a lack of temperature sensor
   Some SX1302 gateway modules do not have a stts751 temperature sensor installed.  As a result the packet forwarder will fail to start.
   Where the sensor is installed place "true" in the next line of code and the sensor will be used
   Where there is no sensor, place "false" in the next line of code
-  The default value if the following line is not used is true
+  The default value if the following line is not included in global_config.json is true
 
   "temperature_sensor": true,
 
 
-  When there is no sensor, use the next command to set the expected temperature which is used in the calculation of rssi
-  If the previous line of code was set to "true" the following temperature setting is ignore and the sensor is used to measure actual temperature
+  When there is no sensor, use the next command to set the expected gateway temperature as this is used in the calculation of RSSI
+  If "temperature_sensor" was set to "true" sensor is used to measure temperature and the following variable is ignore
   If the following line is missing but required, the default value is 20.0C
 
   "temperature_value": 25.0
   
-You only need to copy the file lora_pkt_fwd.  Use the global_config.json as a reference to add lines to your existing file.  The third file reset_lgw.sh has not been modified, use your existing file, its only included to provide a complete set of files.
+You only need to copy the file lora_pkt_fwd.  Use the attached version of global_config.json as a reference to demonstrate how to add lines to your existing file.  The third file reset_lgw.sh has not been modified, use your existing file, its only included to provide a complete set of files.
   
   
   
@@ -65,9 +66,10 @@ V1.3 gateway-to-server protocol				Original gateway-to-server protocol
     "txnb":2,								    "txnb":2
     "temp": 23.2							}}
 }}
+
 Observation
-When a stat datagram using V1.3 of the gateway-to-server protocol is sent the TTN server ignores the datagram all together
+TTN server ignores the "stat" datagram when using V1.3 of the gateway-to-server protocol
 This can be observed on the console as the gateway is "Not Seen".
 The only time the gateway "Last Seen" is updated is when a Lora radio packet is received and forwarded to the server.
-By patching the SX1302 UDP packet forwarder and removing the temp data element bot the V2 and V3 versions of the server operate correctly.
+By patching the SX1302 UDP packet forwarder and removing the temp data element both the V2 and V3 versions of the server operate correctly.
 
