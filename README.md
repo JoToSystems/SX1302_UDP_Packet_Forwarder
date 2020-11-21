@@ -34,6 +34,8 @@ Issue 2 - a lack of temperature sensor
 
   "temperature_value": 25.0
   
+You only need to copy the file lora_pkt_fwd.  Use the global_config.json as a reference to add lines to your existing file.  The third file reset_lgw.sh has not been modified, use your existing file, its only included to provide a complete set of files.
+  
   
   
 ```
