@@ -96,7 +96,7 @@
         "temperature_sensor": true,
         /* when there is no sensor, set the expected temperature which is used in the calculation of rssi */
         /* if the previous line of code was set to "true" the following temperature setting is ignore. */
-		/* if the following line is missing but required, the default value is 20.0C
+		/* if the following line is missing but required, the default value is 20.0C */
         "temperature_value": 25.0
     },
 
